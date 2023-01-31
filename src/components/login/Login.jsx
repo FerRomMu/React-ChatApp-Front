@@ -1,10 +1,13 @@
 import { VStack, ButtonGroup, Button, Heading } from '@chakra-ui/react';
 import { Formik, Form } from 'formik';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from "yup";
 import TextField from './TextField';
 
 const Login = () => {
+
+  const navigate = useNavigate()
 
   return (
     <Formik
@@ -43,7 +46,7 @@ const Login = () => {
 
         <ButtonGroup>
           <Button colorScheme="teal" type="submit">Log In</Button>
-          <Button>Create Account</Button>
+          <Button onClick={ () => navigate('/register') }>Create Account</Button>
         </ButtonGroup>
 
       </VStack>
