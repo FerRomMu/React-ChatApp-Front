@@ -10,16 +10,42 @@ const Signup = () => {
   const navigate = useNavigate()
   return (
     <Formik
-    initialValues= {{username: "", password: ""}}
+    initialValues= {{username: "", password: "", email: "", mobile: ""}}
     validationSchema= { Yup.object({
       username: Yup.string().required("Username required"),
       password: Yup.string()
         .required("Password required")
         .min(6, "Password too short"),
+      email: Yup.string().required("Email required")
+        .email("Invalid email"),
+      mobile: Yup.number().typeError("Must be a number")
+        .required("Mobile number is required")
+        .integer("Invalid mobile number").positive("Invalid mobile number")
+        .min(1000000000, "Invalid mobile number")
+        .max(10000000000, "Invalid mobile number")
     })}
     onSubmit= {(values, actions) => {
-      alert(JSON.stringify(values, null, 2))
+      const vals = { ...values }
+      console.log(vals)
       actions.resetForm()
+      fetch("http://localhost:8081/login/signup", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(vals),
+      })
+      .catch( err => {
+        return
+      })
+      .then( res => {
+        if (!res || !res.ok || res.status > 400){
+          return
+        }
+        console.log(res.json)
+        return res.json()
+      })
     }}>
       <VStack 
       as={Form}
@@ -41,6 +67,18 @@ const Signup = () => {
           placeholder="Enter password"
           autocomplete="off"
           type="password"
+        />
+        <TextField
+          label="Email" 
+          name="email"
+          placeholder="Enter email"
+          autocomplete="off"
+        />
+        <TextField
+          label="Mobile" 
+          name="mobile"
+          placeholder="Enter mobile number"
+          autocomplete="off"
         />
 
         <ButtonGroup>
