@@ -13,7 +13,7 @@ const Views = () => {
       setToken(storedToken);
     }
   }, []);
-  
+
   return (
     <Routes>
       <Route 
@@ -31,7 +31,7 @@ const Views = () => {
       <Route 
         path="*" 
         element={ token?
-          <Index token={token} /> :
+          <Index token={token} setToken={ setToken } /> :
           <Navigate to="/"/>
         }
       />
