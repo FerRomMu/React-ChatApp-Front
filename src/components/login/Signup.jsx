@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import TextField from './TextField';
 import { useNavigate } from 'react-router-dom';
 
-const Signup = () => {
+const Signup = ({ setToken }) => {
 
   const navigate = useNavigate()
   return (
@@ -43,8 +43,14 @@ const Signup = () => {
         if (!res || !res.ok || res.status > 400){
           return
         }
-        console.log(res.json)
         return res.json()
+      })
+      .then(json => {
+        setToken(json.token);
+        window.localStorage.setItem('token', json.token);
+      })
+      .catch(err => {
+        console.error(err);
       })
     }}>
       <VStack 
