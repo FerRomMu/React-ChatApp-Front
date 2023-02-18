@@ -11,12 +11,13 @@ const Sidebar = ({ friends }) => {
                 </Button>
             </HStack>
             <Divider/>
-            <VStack as={ TabList }>
+            <VStack as={ TabList } w="100%">
                 { friends
                     .map(friend => (
-                        <HStack as={ Tab }>
-                            <Circle bg={ friend.connected? "green" : "red" } w="5px" h="5px"/>
+                        <HStack as={ Tab } w="100%"
+                            justify="space-between">
                             <Text>{ friend.username }</Text>
+                            <Circle bg={ friend.connected? "green" : "red" } w="5px" h="5px"/>
                         </HStack>
                     )
                 )}
