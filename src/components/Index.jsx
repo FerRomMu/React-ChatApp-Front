@@ -2,12 +2,13 @@ import { Box, Button, Heading } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 const Index = ({ token, setToken }) => {
+  
     const [testMsg, setTestMsg] = useState(null);
     
     const logout = () => { 
-        console.log("funca")
         setToken("")
-        localStorage.removeItem("token"); }
+        localStorage.removeItem("token"); 
+    }
 
     useEffect(() => {
         fetch("http://localhost:8081/auth", {

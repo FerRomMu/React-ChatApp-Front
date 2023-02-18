@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./login/Login"
 import Signup from "./login/Signup"
+import Home from "./home/Home"
 import React, { useEffect, useState } from 'react';
 import Index from "./Index"
 
@@ -19,13 +20,20 @@ const Views = () => {
       <Route 
         path="/" 
         element={ token? 
-          <Navigate to="/index"/> : <Login setToken={ setToken }/>
+          <Navigate to="/home"/> : <Login setToken={ setToken }/>
         }
       />
       <Route 
         path="/register" 
         element={ token?
-          <Navigate to="/index"/> : <Signup setToken={ setToken } />
+          <Navigate to="/home"/> : <Signup setToken={ setToken } />
+        }
+      />
+      <Route 
+        path="/home" 
+        element={ token?
+          <Home token={token} setToken={ setToken } /> :
+          <Navigate to="/"/>
         }
       />
       <Route 
