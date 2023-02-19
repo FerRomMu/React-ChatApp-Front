@@ -3,7 +3,7 @@ import { Form, Formik } from "formik";
 import TextField from '../TextField'
 import * as Yup from "yup";
 
-const AddFriendModal = ({ isOpen, onClose }) => {
+const AddFriendModal = ({ friends, setFriends, isOpen, onClose }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -19,7 +19,9 @@ const AddFriendModal = ({ isOpen, onClose }) => {
               .max(28, "Invalid username")
           })}
           onSubmit={(values, actions) => {
-            alert(JSON.stringify(values, null, 2))
+            setFriends([...friends, 
+              { username: values.friendName, connected: false }
+            ])
             actions.resetForm()
             onClose()
           }}

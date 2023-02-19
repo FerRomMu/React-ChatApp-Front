@@ -28,7 +28,7 @@ const Home = ({ token, setToken }) => {
   return (
     <Grid templateColumns="repeat(10,1fr)" h="100vh" as={Tabs}>
       <GridItem colSpan="3" borderRight="1px solid gray">
-        <Sidebar friends={friends} />
+        <Sidebar friends={friends} setFriends={setFriends} />
       </GridItem>
       <GridItem colSpan="7">
         <Chat friends={friends} />

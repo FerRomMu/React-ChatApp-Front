@@ -2,7 +2,7 @@ import { ChatIcon } from "@chakra-ui/icons";
 import { Button, Circle, Divider, Heading, HStack, Tab, TabList, Text, useDisclosure, VStack } from "@chakra-ui/react";
 import AddFriendModal from "./AddFriendModal";
 
-const Sidebar = ({ friends }) => {
+const Sidebar = ({ friends, setFriends }) => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -28,7 +28,7 @@ const Sidebar = ({ friends }) => {
             )}
         </VStack>
       </VStack>
-      <AddFriendModal isOpen={isOpen} onClose={onClose} />
+      <AddFriendModal friends={ friends } setFriends={ setFriends } isOpen={isOpen} onClose={onClose} />
     </>
   )
 };
