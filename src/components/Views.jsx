@@ -17,30 +17,30 @@ const Views = () => {
 
   return (
     <Routes>
-      <Route 
-        path="/" 
-        element={ token? 
-          <Navigate to="/home"/> : <Login setToken={ setToken }/>
+      <Route
+        path="/"
+        element={token ?
+          <Navigate to="/home" /> : <Login setToken={setToken} />
         }
       />
-      <Route 
-        path="/register" 
-        element={ token?
-          <Navigate to="/home"/> : <Signup setToken={ setToken } />
+      <Route
+        path="/register"
+        element={token ?
+          <Navigate to="/home" /> : <Signup setToken={setToken} />
         }
       />
-      <Route 
-        path="/home" 
-        element={ token?
-          <Home token={token} setToken={ setToken } /> :
-          <Navigate to="/"/>
+      <Route
+        path="/home"
+        element={token ?
+          <Home token={token} setToken={setToken} /> :
+          <Navigate to="/" />
         }
       />
-      <Route 
-        path="*" 
-        element={ token?
-          <Index token={token} setToken={ setToken } /> :
-          <Navigate to="/"/>
+      <Route
+        path="*"
+        element={token ?
+          <Index token={token} setToken={setToken} /> :
+          <Navigate to="/" />
         }
       />
     </Routes>
