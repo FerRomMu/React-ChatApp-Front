@@ -16,6 +16,10 @@ const Home = ({ token, setToken }) => {
         { username: "fefefe", connected: true }
     ])
 
+    /**
+     * Sort friend list by connected members when
+     * it changes.
+     */
     useEffect(() => {
         const sortedFriends = [...friends].sort((a, b) => (a.connected === b.connected) ? 0 : a.connected ? -1 : 1);
         setFriends(sortedFriends);

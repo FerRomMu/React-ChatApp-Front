@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from "yup";
-import TextField from './TextField';
+import TextField from '../TextField';
 
 const Login = ({setToken}) => {
 
